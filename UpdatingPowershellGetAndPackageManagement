@@ -1,0 +1,88 @@
+Background
+
+This applies for Windows Powershell...
+ 
+I recently noticed that I was still running outdated PowershellGet and PackageManagement versions on my workstations. Those are missing some features that I needed, so I decided to update these modules. 
+ 
+I first tried to do it with update-module PowershellGet
+That didn't work since the module was shipped with powershell and not installed from powershell gallery. Hence I had to to this in another way. 
+ 
+You can check your version with
+ 
+PS P:\> get-Module -Name PowerShellGet -ListAvailable
+ 
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+ 
+ModuleType Version    Name                                ExportedCommands                                                                                                          
+---------- -------    ----                                ----------------                                                                                                          
+Script     1.0.0.1    PowerShellGet                       {​​​​​​​Install-Module, Find-Module, Save-Module, Update-Module...}​​​​​​​            
+ 
+PS P:\> get-Module -Name PackageManagement -ListAvailable
+ 
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+ 
+
+ModuleType Version    Name                                ExportedCommands                                                                                                           
+---------- -------    ----                                ----------------                                                                                                           
+Binary     1.0.0.1    PackageManagement                   {​​​​​​​Find-Package, Get-Package, Get-PackageProvider, Get-PackageSource...}​​​​​​​           
+ 
+ 
+In my case both modules are running on the initial version.                                             
+
+
+
+#####
+
+From a machine with Internet Access
+#
+
+Create a Local folder where to download the Modules (you can choose a path and folder name of your own choosing):
+PS C:\> mkdir PSRepo
+ 
+Save the module from Powershell Gallery (in powershell)
+PS C:\>  Save-Module -Name PowershellGet -Path C:\PSrepo
+ 
+Install the module:
+PS C:\>  Install-Module -Name PowershellGet -Force
+ 
+Check what modules you have now:
+PS C:\>  Get-Module -Name PowerShellGet -ListAvailable
+PS C:\>  Get-Module -Name PackageManagement -ListAvailable
+ 
+You should now see both the outdated versions and the new versions of PowerShellGet and PackageManagement.
+ 
+Close Powershell, open explorer and navigate to Directory: C:\Program Files\WindowsPowerShell\Modules
+Go Into the module directories PowerShellGet and PackageManagement, remove the directories containing the old versions, or move them to another location where powershell won't find them.
+ 
+Open Powershell again and verify that you are only using the updated modules.
+PS C:\>  Get-Module -Name PowerShellGet -ListAvailable
+PS C:\>  Get-Module -Name PackageManagement -ListAvailable
+
+
+
+
+#####
+
+From a machine without Internet Access
+#
+ 
+First create a Local repository, see this guide: Installing Powershell Modules "Offline" in Wiki and copy both the PowerShellGet and PackageManagement modules into your repository directory. I recommend using the last stable version (beta versions can have bugs).
+ 
+Install the module:
+PS C:\>  Install-Module -Name PowershellGet -Force
+ 
+Check what modules you have now:
+PS C:\>  Get-Module -Name PowerShellGet -ListAvailable
+PS C:\>  Get-Module -Name PackageManagement -ListAvailable
+ 
+You should now see both the outdated versions and the new versions of PowerShellGet and PackageManagement.
+ 
+Close Powershell, open explorer and navigate to Directory: C:\Program Files\WindowsPowerShell\Modules
+Go Into the module directories PowerShellGet and PackageManagement, remove the directories containing the old versions, or move them to another location where powershell won't find them.
+ 
+Open Powershell again and verify that you are only using the updated modules.
+PS C:\>  Get-Module -Name PowerShellGet -ListAvailable
+PS C:\>  Get-Module -Name PackageManagement -ListAvailable
+
