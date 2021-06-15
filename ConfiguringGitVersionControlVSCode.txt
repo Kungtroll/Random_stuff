@@ -1,0 +1,23 @@
+Install Git (if not already installed)
+Install Visual Studio Code (if not already installed)
+Make a new folder to use as your repository root folder
+Open a terminal prompt (i use the powershell integrated terminal in Visual Studio Code)
+Type: git --version', this should return the git version you installed in step 1.
+Type: git config --global user.name "My Name" (use your own name of course)
+Type: git config --global user.email "my.email@scania.com" (use your own email of course)
+Make your own repository:
+Open to the folder you created in step 3. (cd C:\MyNewRepo) in Visual Studio Code
+Click the Source Control tab in the left side pane in Visual Studio Code (or use Ctrl+Shift+G)
+Click the + to initialize the repository in the folder you created (C:\MyNewRepo).
+Now you have a local repository with version control.
+or Clone an existing repository:
+Open visual studio Code
+Close any Open folders or workspaces
+Press Ctrl+Shift+P
+Type git clone and then enter (now visual studio code asks for the Repository URL)
+Open your favourity webbrowser and enter the repository link (GitHub or Azure Devops / TFS.
+Click Repos, select the repo you want to clone, (Azure devops example)
+Click the clone button to get the repo link. 
+Paste the link in the visual studio code prompt that now asks for Repository URL, then press enter.
+Navigate to the folder you created as your repository root folder (C:\MyNewRepo).
+Now you will have a clone of the repository and can push to the repository.
