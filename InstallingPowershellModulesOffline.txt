@@ -1,0 +1,9 @@
+Have you ever wondered how to bring powershell modules to an offline environment (that is not allowed to retrieve modules from Powershell Gallery)? Here is one way to do it:
+
+1. Create a local folder on the guest OS where you need to install the module. Example: "C:\PSRepo"
+2. From a computer with internet access, browse in you favourite browser to www.powershellgallery.com, please note that there could be modules in the gallery with malicious code, so always make sure to review what you are bringing in to the network.
+3. Search for your module and choose manual download, Download the raw nupkg file.
+4. Copy the downloaded nupkg file to the folder you created in step 1.
+5. Open Powershell.
+6. Type Register-PSRepository -Name MyLocalRepo -SourceLocation "C:\PSRepo" , replace MyLocalRepo with your repository name of choice and "C:\PSRepo" with the folder you created in Step 1. Please note that you can also add a PublishLocation here if you want to publish your own modules to this repo later on. Actually this repo could be a simple Windows Shared folder used by more than one guest.
+7. Now you can search your local repo and install modules from it, Find-Module "Modulename" | Install-Module
